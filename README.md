@@ -43,6 +43,32 @@ Then initialize Starship in your shell, if you haven't yet:
 | zsh        | `~/.zshrc`                      | `eval "$(starship init zsh)"`                    |
 | fish       | `~/.config/fish/config.fish`    | `starship init fish \| source`                   |
 
+## Transient prompt (PowerShell)
+
+Optional. When you press Enter, the two-line prompt collapses to one line in scrollback,
+stamped with the moment the command ran:
+
+```
+11:40:07 ~\projects ❯ git status
+On branch main ...
+11:40:19 ~\projects ❯ cd ..
+11:40:22 ~ ❯ ls
+```
+
+The time is Teal and the directory Sapphire. The `❯` is green, or red when the previous
+command failed, just like the live prompt. Colors are read from the palette your config
+selects, so the flavor switch carries over.
+
+Save `p9cat.transient.ps1` somewhere, then dot-source it in `$PROFILE` **after** Starship
+is initialized:
+
+```powershell
+Invoke-Expression (&starship init powershell)
+. ~/.config/starship/p9cat.transient.ps1
+```
+
+It needs PowerShell 7 with PSReadLine, and uses Starship's `Enable-TransientPrompt`.
+
 ## Flavors
 
 Change a single line:
