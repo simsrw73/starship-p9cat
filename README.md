@@ -59,6 +59,17 @@ The time is Teal and the directory Sapphire. The `❯` is green, or red when the
 command failed, just like the live prompt. Colors are read from the palette your config
 selects, so the flavor switch carries over.
 
+Slow commands also get a dim line under their output, showing how long they took:
+
+```
+11:41:02 ~\projects ❯ Start-Sleep 3
+  took 3.00 s
+11:41:05 ~\projects ❯
+```
+
+The default threshold is 2 seconds. Set `$P9CatTookThreshold` (in seconds) to change it:
+`0` prints it after every command, and a negative value turns it off.
+
 Save `p9cat.transient.ps1` somewhere, then dot-source it in `$PROFILE` **after** Starship
 is initialized:
 
